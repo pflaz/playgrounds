@@ -2,6 +2,7 @@ package pl.waw.placezabaw;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table (name = "PLAYGROUNDS")
@@ -11,13 +12,18 @@ public class Playground {
     private String city;
     private String address;
     private String postalCode;
+    private double latitude;
+    private double longitude;
     private String description;
+    private List<Attraction> attractions;
 
-    public Playground(User user, String city, String address, String postalCode, String description) {
+    public Playground(User user, String city, String address, String postalCode, double latitude, double longitude, String description) {
         this.user = user;
         this.city = city;
         this.address = address;
         this.postalCode = postalCode;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.description = description;
     }
 
@@ -56,9 +62,29 @@ public class Playground {
         return postalCode;
     }
 
+    @Column(name = "LATITUDE")
+    public double getLatitude() {
+        return latitude;
+    }
+
+    @Column(name = "LONGITUDE")
+    public double getLongitude() {
+        return longitude;
+    }
+
     @Column(name = "DESCRIPTION")
     public String getDescription() {
         return description;
+    }
+
+    @OneToMany(
+            targetEntity = Attraction.class,
+            mappedBy = "playground",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    public List<Attraction> getAttractions() {
+        return attractions;
     }
 
     private void setId(int id) {
@@ -81,7 +107,19 @@ public class Playground {
         this.postalCode = postalCode;
     }
 
+    private void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    private void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
     private void setDescription(String description) {
         this.description = description;
+    }
+
+    private void setAttractions(List<Attraction> attractions) {
+        this.attractions = attractions;
     }
 }

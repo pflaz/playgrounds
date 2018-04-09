@@ -2,12 +2,14 @@ package pl.waw.placezabaw;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = "ATTRACTIONS_TYPES")
 public class AttractionType {
     private int id;
     private String name;
+    private List<Attraction> attractions;
 
     public AttractionType(String name) {
         this.name = name;
@@ -27,6 +29,20 @@ public class AttractionType {
     @Column(name = "NAME")
     public String getName() {
         return name;
+    }
+
+    @OneToMany(
+            targetEntity = Attraction.class,
+            mappedBy = "attractionType",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    public List<Attraction> getAttractions() {
+        return attractions;
+    }
+
+    private void setAttractions(List<Attraction> attractions) {
+        this.attractions = attractions;
     }
 
     private void setId(int id) {

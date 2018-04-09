@@ -19,7 +19,7 @@ public class PlaygroundTestSuite {
     public void testSavePlayground() {
         // Given
         User user = new User("username", "login", "password");
-        Playground playground = new Playground(user, "City", "Address", "00-000", "Description");
+        Playground playground = new Playground(user, "City", "Address", "00-000", 52.00, 64.00, "Description");
         user.getPlaygrounds().add(playground);
 
         // When

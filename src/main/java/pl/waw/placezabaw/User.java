@@ -50,7 +50,7 @@ public class User {
             targetEntity = Playground.class,
             mappedBy = "user",
             cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
+            fetch = FetchType.LAZY
     )
     public List<Playground> getPlaygrounds() {
         return playgrounds;
