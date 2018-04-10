@@ -13,6 +13,7 @@ public class User {
     private String login;
     private String password;
     private List<Playground> playgrounds = new ArrayList<>();
+    private List<Rate> rates = new ArrayList<>();
 
     public User(String name, String login, String password) {
         this.name = name;
@@ -56,6 +57,16 @@ public class User {
         return playgrounds;
     }
 
+    @OneToMany(
+            targetEntity = Rate.class,
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    public List<Rate> getRates() {
+        return rates;
+    }
+
     private void setId(int id) {
         this.id = id;
     }
@@ -74,5 +85,9 @@ public class User {
 
     private void setPlaygrounds(List<Playground> playgrounds) {
         this.playgrounds = playgrounds;
+    }
+
+    private void setRates(List<Rate> rates) {
+        this.rates = rates;
     }
 }

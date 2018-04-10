@@ -2,6 +2,7 @@ package pl.waw.placezabaw;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -9,7 +10,7 @@ import java.util.List;
 public class AttractionType {
     private int id;
     private String name;
-    private List<Attraction> attractions;
+    private List<Attraction> attractions = new ArrayList<>();
 
     public AttractionType(String name) {
         this.name = name;

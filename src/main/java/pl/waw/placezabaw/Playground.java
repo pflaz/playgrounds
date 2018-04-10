@@ -2,6 +2,7 @@ package pl.waw.placezabaw;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,7 +16,8 @@ public class Playground {
     private double latitude;
     private double longitude;
     private String description;
-    private List<Attraction> attractions;
+    private List<Attraction> attractions = new ArrayList<>();
+    private List<Rate> rates = new ArrayList<>();
 
     public Playground(User user, String city, String address, String postalCode, double latitude, double longitude, String description) {
         this.user = user;
@@ -87,6 +89,16 @@ public class Playground {
         return attractions;
     }
 
+    @OneToMany(
+            targetEntity = Rate.class,
+            mappedBy = "playground",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    public List<Rate> getRates() {
+        return rates;
+    }
+
     private void setId(int id) {
         this.id = id;
     }
@@ -121,5 +133,9 @@ public class Playground {
 
     private void setAttractions(List<Attraction> attractions) {
         this.attractions = attractions;
+    }
+
+    private void setRates(List<Rate> rates) {
+        this.rates = rates;
     }
 }

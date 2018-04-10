@@ -8,19 +8,19 @@ import java.time.LocalDateTime;
 @Table(name = "RATES")
 public class Rate {
     private int id;
-//    private User user;
-//    private Playground playground;
+    private User user;
+    private Playground playground;
     private int rate;
     private String comment;
     private LocalDateTime ratedDateTime;
 
-/*    public Rate(User user, Playground playground, int rate, String comment) {
+    public Rate(User user, Playground playground, int rate, String comment) {
         this.user = user;
         this.playground = playground;
         this.rate = rate;
         this.comment = comment;
         this.ratedDateTime = LocalDateTime.now();
-    }*/
+    }
 
     public Rate() {
     }
@@ -33,13 +33,21 @@ public class Rate {
         return id;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
+    @ManyToOne(
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(name = "USER_ID")
+    public User getUser() {
+        return user;
+    }
 
-//    public Playground getPlayground() {
-//        return playground;
-//    }
+    @ManyToOne(
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(name = "PLAYGROUND_ID")
+    public Playground getPlayground() {
+        return playground;
+    }
 
     @Column(name = "RATE")
     @NotNull
@@ -62,13 +70,13 @@ public class Rate {
         this.id = id;
     }
 
-//    private void setUser(User user) {
-//        this.user = user;
-//    }
+    private void setUser(User user) {
+        this.user = user;
+    }
 
-//    private void setPlayground(Playground playground) {
-//        this.playground = playground;
-//    }
+    private void setPlayground(Playground playground) {
+        this.playground = playground;
+    }
 
     private void setRate(int rate) {
         this.rate = rate;

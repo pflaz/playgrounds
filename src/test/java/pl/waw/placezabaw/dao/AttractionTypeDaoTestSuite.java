@@ -1,4 +1,4 @@
-package pl.waw.placezabaw;
+package pl.waw.placezabaw.dao;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -6,13 +6,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import pl.waw.placezabaw.AttractionType;
 import pl.waw.placezabaw.dao.AttractionTypeDao;
 
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class AttractionTypeTestSuite {
+public class AttractionTypeDaoTestSuite {
 
     @Autowired
     AttractionTypeDao attractionTypeDao;
