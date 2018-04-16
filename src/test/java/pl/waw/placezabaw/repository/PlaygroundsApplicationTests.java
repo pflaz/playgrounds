@@ -1,4 +1,4 @@
-package pl.waw.placezabaw.dao;
+package pl.waw.placezabaw.repository;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

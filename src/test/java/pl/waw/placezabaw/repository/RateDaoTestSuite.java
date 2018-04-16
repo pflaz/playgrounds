@@ -1,4 +1,4 @@
-package pl.waw.placezabaw.dao;
+package pl.waw.placezabaw.repository;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -6,9 +6,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import pl.waw.placezabaw.Playground;
-import pl.waw.placezabaw.Rate;
-import pl.waw.placezabaw.User;
+import pl.waw.placezabaw.domain.Playground;
+import pl.waw.placezabaw.domain.Rate;
+import pl.waw.placezabaw.domain.User;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

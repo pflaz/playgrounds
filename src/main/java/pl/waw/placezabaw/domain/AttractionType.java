@@ -1,4 +1,4 @@
-package pl.waw.placezabaw;
+package pl.waw.placezabaw.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
