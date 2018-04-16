@@ -12,7 +12,7 @@ public class Attraction {
     private int quantity;
     private String description;
 
-      public Attraction(AttractionType attractionType, Playground playground, int quantity, String description) {
+    public Attraction(AttractionType attractionType, Playground playground, int quantity, String description) {
         this.attractionType = attractionType;
         this.playground = playground;
         this.quantity = quantity;
@@ -30,17 +30,13 @@ public class Attraction {
         return id;
     }
 
-    @ManyToOne(
-            cascade = CascadeType.ALL
-    )
+    @ManyToOne
     @JoinColumn(name = "ATTRACTION_TYPE_ID")
     public AttractionType getAttractionType() {
         return attractionType;
     }
 
-    @ManyToOne(
-            cascade = CascadeType.ALL
-    )
+    @ManyToOne
     @JoinColumn(name = "PLAYGROUND_ID")
     public Playground getPlayground() {
         return playground;

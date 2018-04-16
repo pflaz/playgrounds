@@ -41,7 +41,6 @@ public class Playground {
     }
 
     @ManyToOne (
-            cascade = CascadeType.ALL,
             fetch = FetchType.EAGER
     )
     @JoinColumn(name = "USER_ID")

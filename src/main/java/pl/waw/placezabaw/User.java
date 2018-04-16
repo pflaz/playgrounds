@@ -12,13 +12,15 @@ public class User {
     private String name;
     private String login;
     private String password;
+    private String email;
     private List<Playground> playgrounds = new ArrayList<>();
     private List<Rate> rates = new ArrayList<>();
 
-    public User(String name, String login, String password) {
+    public User(String name, String login, String password, String email) {
         this.name = name;
         this.login = login;
         this.password = password;
+        this.email = email;
     }
 
     public User() {
@@ -45,6 +47,11 @@ public class User {
     @Column(name = "PASSWORD")
     public String getPassword() {
         return password;
+    }
+
+    @Column(name = "EMAIL")
+    public String getEmail() {
+        return email;
     }
 
     @OneToMany(
@@ -81,6 +88,10 @@ public class User {
 
     private void setPassword(String password) {
         this.password = password;
+    }
+
+    private void setEmail(String email) {
+        this.email = email;
     }
 
     private void setPlaygrounds(List<Playground> playgrounds) {

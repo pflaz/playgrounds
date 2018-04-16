@@ -15,14 +15,21 @@ import pl.waw.placezabaw.User;
 public class RateDaoTestSuite {
     @Autowired
     RateDao rateDao;
+    @Autowired
+    UserDao userDao;
+    @Autowired
+    PlaygroundDao playgroundDao;
 
     @Test
     public void testSaveRate() {
         //Given
-        User user = new User("username", "login", "pass");
-        User user2 = new User("user2", "login2", "pass2");
+        User user = new User("username", "login", "pass", "email");
+        userDao.save(user);
+        User user2 = new User("user2", "login2", "pass2", "email");
+        userDao.save(user2);
         Playground playground = new Playground(user, "city", "address", "00-000", 32,32,"desc");
         user.getPlaygrounds().add(playground);
+        playgroundDao.save(playground);
         Rate rate = new Rate(user, playground, 5, "comment");
         user.getRates().add(rate);
         playground.getRates().add(rate);
@@ -42,6 +49,13 @@ public class RateDaoTestSuite {
 
         // CleanUp
         rateDao.delete(id1);
+        rateDao.delete(id2);
+        int playgroundId = playground.getId();
+        playgroundDao.delete(playgroundId);
+        int userId = user.getId();
+        int user2Id = user2.getId();
+        userDao.delete(userId);
+        userDao.delete(user2Id);
 
     }
 }

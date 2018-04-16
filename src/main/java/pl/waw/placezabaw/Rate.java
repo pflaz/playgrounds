@@ -33,17 +33,13 @@ public class Rate {
         return id;
     }
 
-    @ManyToOne(
-            cascade = CascadeType.ALL
-    )
+    @ManyToOne
     @JoinColumn(name = "USER_ID")
     public User getUser() {
         return user;
     }
 
-    @ManyToOne(
-            cascade = CascadeType.ALL
-    )
+    @ManyToOne
     @JoinColumn(name = "PLAYGROUND_ID")
     public Playground getPlayground() {
         return playground;
