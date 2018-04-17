@@ -16,7 +16,7 @@ public class User {
     private List<Playground> playgrounds = new ArrayList<>();
     private List<Rate> rates = new ArrayList<>();
 
-    public User(String name, String login, String password, String email) {
+    public User(int id, String name, String login, String password, String email) {
         this.name = name;
         this.login = login;
         this.password = password;

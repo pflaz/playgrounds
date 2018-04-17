@@ -17,7 +17,7 @@ public class UserDaoTestSuite {
     @Test
     public void testSaveUser() {
         // Given
-        User user = new User("username", "user login", "pass", "e@mail");
+        User user = new User(0, "username", "user login", "pass", "e@mail");
 
         // When
         userDao.save(user);

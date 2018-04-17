@@ -23,9 +23,9 @@ public class RateDaoTestSuite {
     @Test
     public void testSaveRate() {
         //Given
-        User user = new User("username", "login", "pass", "email");
+        User user = new User(0,"username", "login", "pass", "email");
         userDao.save(user);
-        User user2 = new User("user2", "login2", "pass2", "email");
+        User user2 = new User(0,"user2", "login2", "pass2", "email");
         userDao.save(user2);
         Playground playground = new Playground(user, "city", "address", "00-000", 32,32,"desc");
         user.getPlaygrounds().add(playground);
