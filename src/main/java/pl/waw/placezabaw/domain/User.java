@@ -17,6 +17,7 @@ public class User {
     private List<Rate> rates = new ArrayList<>();
 
     public User(int id, String name, String login, String password, String email) {
+        this.id = id;
         this.name = name;
         this.login = login;
         this.password = password;
