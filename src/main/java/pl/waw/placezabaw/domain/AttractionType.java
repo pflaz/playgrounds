@@ -12,7 +12,8 @@ public class AttractionType {
     private String name;
     private List<Attraction> attractions = new ArrayList<>();
 
-    public AttractionType(String name) {
+    public AttractionType(int id, String name) {
+        this.id = id;
         this.name = name;
     }
 

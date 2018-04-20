@@ -26,18 +26,18 @@ public class AttractionDaoTestSuite {
     @Test
     public void testSaveAttraction() {
         // Given
-        AttractionType attractionType = new AttractionType("test attraction type");
+        AttractionType attractionType = new AttractionType(0,"test attraction type");
         attractionTypeDao.save(attractionType);
         User user = new User(0, "test user", "login", "pass", "email");
         userDao.save(user);
-        Playground playground = new Playground(user, "city", "address", "00-000", 32.22, 23.33, "desc");
+        Playground playground = new Playground(0,user, "city", "address", "00-000", 32.22, 23.33, "desc");
         user.getPlaygrounds().add(playground);
         playgroundDao.save(playground);
 
-        Attraction attraction = new Attraction(attractionType, playground, 2, "desc of attraction");
+        Attraction attraction = new Attraction(0, attractionType, playground, 2, "desc of attraction");
         attractionType.getAttractions().add(attraction);
         playground.getAttractions().add(attraction);
-        Attraction attraction2 = new Attraction(attractionType, playground, 3, "description of attraction 2");
+        Attraction attraction2 = new Attraction(0, attractionType, playground, 3, "description of attraction 2");
         attractionType.getAttractions().add(attraction2);
         playground.getAttractions().add(attraction2);
 

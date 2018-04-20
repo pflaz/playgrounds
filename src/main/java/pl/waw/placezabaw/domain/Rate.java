@@ -14,7 +14,8 @@ public class Rate {
     private String comment;
     private LocalDateTime ratedDateTime;
 
-    public Rate(User user, Playground playground, int rate, String comment) {
+    public Rate(int id, User user, Playground playground, int rate, String comment) {
+        this.id = id;
         this.user = user;
         this.playground = playground;
         this.rate = rate;

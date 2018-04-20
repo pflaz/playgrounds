@@ -27,13 +27,13 @@ public class RateDaoTestSuite {
         userDao.save(user);
         User user2 = new User(0,"user2", "login2", "pass2", "email");
         userDao.save(user2);
-        Playground playground = new Playground(user, "city", "address", "00-000", 32,32,"desc");
+        Playground playground = new Playground(0,user, "city", "address", "00-000", 32,32,"desc");
         user.getPlaygrounds().add(playground);
         playgroundDao.save(playground);
-        Rate rate = new Rate(user, playground, 5, "comment");
+        Rate rate = new Rate(0,user, playground, 5, "comment");
         user.getRates().add(rate);
         playground.getRates().add(rate);
-        Rate rate2 = new Rate(user2, playground, 4, "");
+        Rate rate2 = new Rate(0,user2, playground, 4, "");
         user2.getRates().add(rate2);
         playground.getRates().add(rate2);
 

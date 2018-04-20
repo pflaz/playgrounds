@@ -19,7 +19,8 @@ public class Playground {
     private List<Attraction> attractions = new ArrayList<>();
     private List<Rate> rates = new ArrayList<>();
 
-    public Playground(User user, String city, String address, String postalCode, double latitude, double longitude, String description) {
+    public Playground(int id, User user, String city, String address, String postalCode, double latitude, double longitude, String description) {
+        this.id = id;
         this.user = user;
         this.city = city;
         this.address = address;

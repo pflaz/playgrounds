@@ -23,8 +23,8 @@ public class PlaygroundDaoTestSuite {
         // Given
         User user = new User(0,"username", "login", "password", "email");
         userDao.save(user);
-        Playground playground = new Playground(user, "City", "Address", "00-000", 52.00, 64.00, "Description");
-        Playground playground2 = new Playground(user, "city2", "address2", "11-111", 12, 12, "desc2");
+        Playground playground = new Playground(0,user, "City", "Address", "00-000", 52.00, 64.00, "Description");
+        Playground playground2 = new Playground(0,user, "city2", "address2", "11-111", 12, 12, "desc2");
         user.getPlaygrounds().add(playground);
         user.getPlaygrounds().add(playground2);
 

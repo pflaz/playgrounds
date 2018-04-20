@@ -1,5 +1,7 @@
 package pl.waw.placezabaw.domain;
 
+import lombok.AllArgsConstructor;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;

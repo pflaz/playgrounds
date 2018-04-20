@@ -12,7 +12,8 @@ public class Attraction {
     private int quantity;
     private String description;
 
-    public Attraction(AttractionType attractionType, Playground playground, int quantity, String description) {
+    public Attraction(int id, AttractionType attractionType, Playground playground, int quantity, String description) {
+        this.id = id;
         this.attractionType = attractionType;
         this.playground = playground;
         this.quantity = quantity;

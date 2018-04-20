@@ -19,7 +19,7 @@ public class AttractionTypeDaoTestSuite {
     @Test
     public void testSaveAttractionType() {
         // Given
-        AttractionType attractionType = new AttractionType("test attraction type");
+        AttractionType attractionType = new AttractionType(0,"test attraction type");
 
         // When
         attractionTypeDao.save(attractionType);
