@@ -32,7 +32,7 @@ public class User {
     @Column(name = "ID", unique = true)
     @NotNull
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getId() {
         return id;
     }
