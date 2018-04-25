@@ -1,9 +1,6 @@
 package pl.waw.placezabaw.domain;
 
-import lombok.AllArgsConstructor;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +27,6 @@ public class User {
     }
 
     @Column(name = "ID", unique = true)
-    @NotNull
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int getId() {

@@ -34,7 +34,6 @@ public class Playground {
     }
 
     @Column(name = "ID", unique = true)
-    @NotNull
     @Id
     @GeneratedValue
     public int getId() {
