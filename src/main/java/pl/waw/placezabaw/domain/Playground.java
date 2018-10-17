@@ -8,15 +8,40 @@ import java.util.List;
 @Entity
 @Table (name = "PLAYGROUNDS")
 public class Playground {
+    @Column(name = "ID", unique = true)
+    @Id
+    @GeneratedValue
     private int id;
+    @ManyToOne (
+            fetch = FetchType.EAGER
+    )
+    @JoinColumn(name = "USER_ID")
     private User user;
+    @Column(name = "CITY")
     private String city;
+    @Column(name = "ADDRESS")
     private String address;
+    @Column(name = "POSTAL_CODE")
     private String postalCode;
+    @Column(name = "LATITUDE")
     private double latitude;
+    @Column(name = "LONGITUDE")
     private double longitude;
+    @Column(name = "DESCRIPTION")
     private String description;
+    @OneToMany(
+            targetEntity = Attraction.class,
+            mappedBy = "playground",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
     private List<Attraction> attractions = new ArrayList<>();
+    @OneToMany(
+            targetEntity = Rate.class,
+            mappedBy = "playground",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
     private List<Rate> rates = new ArrayList<>();
 
     public Playground(int id, User user, String city, String address, String postalCode, double latitude, double longitude, String description) {
@@ -33,67 +58,43 @@ public class Playground {
     public Playground() {
     }
 
-    @Column(name = "ID", unique = true)
-    @Id
-    @GeneratedValue
+
     public int getId() {
         return id;
     }
 
-    @ManyToOne (
-            fetch = FetchType.EAGER
-    )
-    @JoinColumn(name = "USER_ID")
     public User getUser() {
         return user;
     }
 
-    @Column(name = "CITY")
     public String getCity() {
         return city;
     }
 
-    @Column(name = "ADDRESS")
     public String getAddress() {
         return address;
     }
 
-    @Column(name = "POSTAL_CODE")
     public String getPostalCode() {
         return postalCode;
     }
 
-    @Column(name = "LATITUDE")
     public double getLatitude() {
         return latitude;
     }
 
-    @Column(name = "LONGITUDE")
     public double getLongitude() {
         return longitude;
     }
 
-    @Column(name = "DESCRIPTION")
     public String getDescription() {
         return description;
     }
 
-    @OneToMany(
-            targetEntity = Attraction.class,
-            mappedBy = "playground",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
     public List<Attraction> getAttractions() {
         return attractions;
     }
 
-    @OneToMany(
-            targetEntity = Rate.class,
-            mappedBy = "playground",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
     public List<Rate> getRates() {
         return rates;
     }

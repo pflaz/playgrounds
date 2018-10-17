@@ -8,8 +8,20 @@ import java.util.List;
 @Entity
 @Table(name = "ATTRACTIONS_TYPES")
 public class AttractionType {
+
+    @Column(name = "ID", unique = true)
+    @Id
+    @GeneratedValue
     private int id;
+
+    @Column(name = "NAME")
     private String name;
+
+    @OneToMany(
+            targetEntity = Attraction.class,
+            mappedBy = "attractionType",
+            fetch = FetchType.LAZY
+    )
     private List<Attraction> attractions = new ArrayList<>();
 
     public AttractionType(int id, String name) {
@@ -20,24 +32,14 @@ public class AttractionType {
     public AttractionType() {
     }
 
-    @Column(name = "ID", unique = true)
-    @Id
-    @GeneratedValue
     public int getId() {
         return id;
     }
 
-    @Column(name = "NAME")
     public String getName() {
         return name;
     }
 
-    @OneToMany(
-            targetEntity = Attraction.class,
-            mappedBy = "attractionType",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
     public List<Attraction> getAttractions() {
         return attractions;
     }

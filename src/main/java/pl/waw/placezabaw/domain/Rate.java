@@ -7,11 +7,23 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "RATES")
 public class Rate {
+    @Column(name = "ID", unique = true)
+    @Id
+    @GeneratedValue
     private int id;
+    @ManyToOne
+    @JoinColumn(name = "USER_ID")
     private User user;
+    @ManyToOne
+    @JoinColumn(name = "PLAYGROUND_ID")
     private Playground playground;
+    @Column(name = "RATE")
+    @NotNull
     private int rate;
+    @Column(name = "COMMENT")
     private String comment;
+    @Column(name = "RATED_DATE_TIME")
+    @NotNull
     private LocalDateTime ratedDateTime;
 
     public Rate(int id, User user, Playground playground, int rate, String comment) {
@@ -26,38 +38,27 @@ public class Rate {
     public Rate() {
     }
 
-    @Column(name = "ID", unique = true)
-    @Id
-    @GeneratedValue
+
     public int getId() {
         return id;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "USER_ID")
     public User getUser() {
         return user;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "PLAYGROUND_ID")
     public Playground getPlayground() {
         return playground;
     }
 
-    @Column(name = "RATE")
-    @NotNull
     public int getRate() {
         return rate;
     }
 
-    @Column(name = "COMMENT")
     public String getComment() {
         return comment;
     }
 
-    @Column(name = "RATED_DATE_TIME")
-    @NotNull
     public LocalDateTime getRatedDateTime() {
         return ratedDateTime;
     }

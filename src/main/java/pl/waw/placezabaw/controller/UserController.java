@@ -3,6 +3,7 @@ package pl.waw.placezabaw.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.waw.placezabaw.domain.UserDto;
+import pl.waw.placezabaw.exceptions.UserNotFoundException;
 import pl.waw.placezabaw.mapper.UserMapper;
 import pl.waw.placezabaw.service.DbService;
 
@@ -13,11 +14,14 @@ import java.util.List;
 @RestController
 @RequestMapping("v1/user")
 public class UserController {
-    @Autowired
     private DbService dbService;
+    private UserMapper userMapper;
 
     @Autowired
-    private UserMapper userMapper;
+    public UserController(DbService dbService, UserMapper userMapper) {
+        this.dbService = dbService;
+        this.userMapper = userMapper;
+    }
 
     @RequestMapping(method = RequestMethod.GET, value = "getUsers")
     public List<UserDto> getUsers() {

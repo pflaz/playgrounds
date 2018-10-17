@@ -1,15 +1,30 @@
 package pl.waw.placezabaw.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "ATTRACTIONS")
 public class Attraction {
+
+    @Column(name = "ID", unique = true)
+    @Id
+    @GeneratedValue
     private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "ATTRACTION_TYPE_ID")
     private AttractionType attractionType;
+
+    @ManyToOne
+    @JoinColumn(name = "PLAYGROUND_ID")
     private Playground playground;
+
+    @Column(name = "QUANTITY")
+    @Min(value = 0)
     private int quantity;
+
+    @Column(name = "DESCRIPTION")
     private String description;
 
     public Attraction(int id, AttractionType attractionType, Playground playground, int quantity, String description) {
@@ -23,31 +38,23 @@ public class Attraction {
     public Attraction() {
     }
 
-    @Column(name = "ID", unique = true)
-    @Id
-    @GeneratedValue
+
     public int getId() {
         return id;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "ATTRACTION_TYPE_ID")
     public AttractionType getAttractionType() {
         return attractionType;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "PLAYGROUND_ID")
     public Playground getPlayground() {
         return playground;
     }
 
-    @Column(name = "QUANTITY")
     public int getQuantity() {
         return quantity;
     }
 
-    @Column(name = "DESCRIPTION")
     public String getDescription() {
         return description;
     }

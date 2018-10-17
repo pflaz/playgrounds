@@ -1,4 +1,4 @@
-package pl.waw.placezabaw.controller;
+package pl.waw.placezabaw.exceptions;
 
 public class PlaygroundNotFoundException {
 }
