@@ -3,6 +3,7 @@ package pl.waw.placezabaw.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.waw.placezabaw.domain.*;
+import pl.waw.placezabaw.exceptions.UserNotFoundException;
 import pl.waw.placezabaw.repository.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -11,16 +12,21 @@ import java.util.Optional;
 
 @Service
 public class DbService {
-    @Autowired
+
     UserDao userDao;
-    @Autowired
     AttractionTypeDao attractionTypeDao;
-    @Autowired
     AttractionDao attractionDao;
-    @Autowired
     PlaygroundDao playgroundDao;
-    @Autowired
     RateDao rateDao;
+
+    @Autowired
+    public DbService(UserDao userDao, AttractionTypeDao attractionTypeDao, AttractionDao attractionDao, PlaygroundDao playgroundDao, RateDao rateDao) {
+        this.userDao = userDao;
+        this.attractionTypeDao = attractionTypeDao;
+        this.attractionDao = attractionDao;
+        this.playgroundDao = playgroundDao;
+        this.rateDao = rateDao;
+    }
 
     public List<User> getAllUsers() {
         return userDao.findAll();
@@ -33,6 +39,15 @@ public class DbService {
     }
     public void deleteUser(final Integer id) {
         userDao.delete(id);
+    }
+
+    public User updateUser(int userId, User user) throws UserNotFoundException {
+        User tmpUser = userDao.findOne(userId);
+        if (tmpUser == null) {
+            throw new UserNotFoundException("User (ID: " + userId + ") not found.");
+        }
+        user.setId(userId);
+        return userDao.save(user);
     }
 
     public List<AttractionType> getAllAttractionTypes() {
@@ -86,5 +101,6 @@ public class DbService {
     public void deleteRate(final Integer id) {
         rateDao.delete(id);
     }
+
 
 }

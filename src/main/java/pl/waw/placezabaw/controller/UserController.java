@@ -12,7 +12,7 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 import java.util.List;
 
 @RestController
-@RequestMapping("v1/user")
+@RequestMapping("v1/users")
 public class UserController {
     private DbService dbService;
     private UserMapper userMapper;
@@ -23,27 +23,27 @@ public class UserController {
         this.userMapper = userMapper;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "getUsers")
+    @RequestMapping(method = RequestMethod.GET)
     public List<UserDto> getUsers() {
         return userMapper.mapToUserDtoList(dbService.getAllUsers());
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "getUser")
-    public UserDto getUser(@RequestParam Integer userId) throws UserNotFoundException {
+    @RequestMapping(method = RequestMethod.GET, value = "/{userId}")
+    public UserDto getUser(@PathVariable Integer userId) throws UserNotFoundException {
         return userMapper.mapToUserDto(dbService.getUser(userId).orElseThrow(UserNotFoundException::new));
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "createUser", consumes = APPLICATION_JSON_VALUE)
-    public void createUser(@RequestBody UserDto userDto) {
-        dbService.saveUser(userMapper.mapToUser(userDto));
-    }
-
-    @RequestMapping(method = RequestMethod.PUT, value = "updateUser")
-    public UserDto updateUser(@RequestBody UserDto userDto) {
+    @RequestMapping(method = RequestMethod.POST, consumes = APPLICATION_JSON_VALUE)
+    public UserDto createUser(@RequestBody UserDto userDto) {
         return userMapper.mapToUserDto(dbService.saveUser(userMapper.mapToUser(userDto)));
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "deleteUser")
+    @RequestMapping(method = RequestMethod.PUT, consumes = APPLICATION_JSON_VALUE, value = "/{userId}")
+    public UserDto updateUser(@PathVariable int userId, @RequestBody UserDto userDto) throws UserNotFoundException {
+        return userMapper.mapToUserDto(dbService.updateUser(userId, userMapper.mapToUser(userDto)));
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE)
     public void deleteUser(@RequestParam Integer userId) {
         dbService.deleteUser(userId);
     }

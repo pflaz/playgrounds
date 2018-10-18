@@ -21,4 +21,5 @@ public interface UserDao extends CrudRepository<User, Integer> {
 
     @Override
     void delete(Integer id);
+
 }
