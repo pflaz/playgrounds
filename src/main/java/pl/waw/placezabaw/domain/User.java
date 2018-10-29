@@ -45,6 +45,16 @@ public class User {
         this.email = email;
     }
 
+    public User(int id, String name, String login, String password, String email, List<Playground> playgrounds, List<Rate> rates) {
+        this.id = id;
+        this.name = name;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.playgrounds = playgrounds;
+        this.rates = rates;
+    }
+
     public User() {
     }
 

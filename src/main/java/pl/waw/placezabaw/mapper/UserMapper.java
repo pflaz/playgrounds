@@ -1,9 +1,12 @@
 package pl.waw.placezabaw.mapper;
 
 import org.springframework.stereotype.Component;
+import pl.waw.placezabaw.domain.Playground;
+import pl.waw.placezabaw.domain.Rate;
 import pl.waw.placezabaw.domain.User;
 import pl.waw.placezabaw.domain.UserDto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,18 +23,29 @@ public class UserMapper {
     }
 
     public UserDto mapToUserDto(final User user) {
+        List<Integer> playgroundsIds;
+        playgroundsIds = user.getPlaygrounds().stream()
+                .map(Playground::getId)
+                .collect(Collectors.toList());
+
+        List<Integer> ratesIds;
+        ratesIds = user.getRates().stream()
+                .map(Rate::getId)
+                .collect(Collectors.toList());
         return new UserDto(
                 user.getId(),
                 user.getName(),
                 user.getLogin(),
                 user.getPassword(),
-                user.getEmail()
+                user.getEmail(),
+                playgroundsIds,
+                ratesIds
         );
     }
 
     public List<UserDto> mapToUserDtoList(final List<User> userList) {
         return userList.stream()
-                .map(user -> new UserDto(user.getId(), user.getName(), user.getLogin(), user.getPassword(), user.getEmail()))
+                .map(this::mapToUserDto)
                 .collect(Collectors.toList());
     }
 }

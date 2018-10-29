@@ -3,6 +3,7 @@ package pl.waw.placezabaw.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.waw.placezabaw.domain.AttractionType;
+import pl.waw.placezabaw.exceptions.AttractionTypeNotFoundException;
 import pl.waw.placezabaw.repository.AttractionTypeDao;
 
 import java.util.List;
@@ -29,5 +30,15 @@ public class AttractionTypeDbService {
     }
     public void delete(final Integer id) {
         attractionTypeDao.delete(id);
+    }
+
+    public AttractionType update(int id, AttractionType attractionType) throws AttractionTypeNotFoundException {
+        AttractionType tmpAttractionType = attractionTypeDao.findOne(id);
+        if (tmpAttractionType == null) {
+            throw new AttractionTypeNotFoundException("Attraction type (ID: " + id + " ) not found.");
+        }
+        attractionType.setId(id);
+        attractionTypeDao.save(attractionType);
+        return attractionType;
     }
 }

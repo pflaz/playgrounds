@@ -44,15 +44,15 @@ public class AttractionType {
         return attractions;
     }
 
-    private void setAttractions(List<Attraction> attractions) {
+    public void setAttractions(List<Attraction> attractions) {
         this.attractions = attractions;
     }
 
-    private void setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 }
