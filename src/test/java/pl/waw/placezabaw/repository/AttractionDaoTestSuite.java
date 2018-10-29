@@ -31,8 +31,8 @@ public class AttractionDaoTestSuite {
         User user = new User(0, "test user", "login", "pass", "email");
         userDao.save(user);
         Playground playground = new Playground(0,user, "city", "address", "00-000", 32.22, 23.33, "desc");
-        user.getPlaygrounds().add(playground);
         playgroundDao.save(playground);
+        user.getPlaygrounds().add(playground);
 
         Attraction attraction = new Attraction(0, attractionType, playground, 2, "desc of attraction");
         attractionType.getAttractions().add(attraction);

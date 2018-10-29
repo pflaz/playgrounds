@@ -28,40 +28,7 @@ public class DbService {
         this.rateDao = rateDao;
     }
 
-    public List<User> getAllUsers() {
-        return userDao.findAll();
-    }
-    public Optional<User> getUser(final Integer id) {
-        return userDao.findById(id);
-    }
-    public User saveUser(final User user) {
-        return userDao.save(user);
-    }
-    public void deleteUser(final Integer id) {
-        userDao.delete(id);
-    }
 
-    public User updateUser(int userId, User user) throws UserNotFoundException {
-        User tmpUser = userDao.findOne(userId);
-        if (tmpUser == null) {
-            throw new UserNotFoundException("User (ID: " + userId + ") not found.");
-        }
-        user.setId(userId);
-        return userDao.save(user);
-    }
-
-    public List<AttractionType> getAllAttractionTypes() {
-        return attractionTypeDao.findAll();
-    }
-    public Optional<AttractionType> getAttractionType(final Integer id) {
-        return attractionTypeDao.findById(id);
-    }
-    public AttractionType saveAttractionType(final AttractionType attractionType) {
-        return attractionTypeDao.save(attractionType);
-    }
-    public void deleteAttractionType(final Integer id) {
-        attractionTypeDao.delete(id);
-    }
 
     public List<Attraction> getAllAttractions() {
         return attractionDao.findAll();
