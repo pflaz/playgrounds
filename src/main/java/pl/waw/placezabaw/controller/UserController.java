@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.waw.placezabaw.domain.UserDto;
 import pl.waw.placezabaw.exceptions.UserNotFoundException;
 import pl.waw.placezabaw.mapper.UserMapper;
-import pl.waw.placezabaw.service.DbService;
 import pl.waw.placezabaw.service.UserDbService;
 
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
