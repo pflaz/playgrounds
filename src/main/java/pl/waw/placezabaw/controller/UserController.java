@@ -41,6 +41,7 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.PUT, consumes = APPLICATION_JSON_VALUE, value = "/{userId}")
     public UserDto updateUser(@PathVariable int userId, @RequestBody UserDto userDto) throws UserNotFoundException {
+        userDto.setId(userId);
         return userMapper.mapToUserDto(dbService.update(userId, userMapper.mapToUser(userDto)));
     }
 

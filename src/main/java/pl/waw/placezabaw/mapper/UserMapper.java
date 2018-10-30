@@ -23,23 +23,12 @@ public class UserMapper {
     }
 
     public UserDto mapToUserDto(final User user) {
-        List<Integer> playgroundsIds;
-        playgroundsIds = user.getPlaygrounds().stream()
-                .map(Playground::getId)
-                .collect(Collectors.toList());
-
-        List<Integer> ratesIds;
-        ratesIds = user.getRates().stream()
-                .map(Rate::getId)
-                .collect(Collectors.toList());
         return new UserDto(
                 user.getId(),
                 user.getName(),
                 user.getLogin(),
                 user.getPassword(),
-                user.getEmail(),
-                playgroundsIds,
-                ratesIds
+                user.getEmail()
         );
     }
 
