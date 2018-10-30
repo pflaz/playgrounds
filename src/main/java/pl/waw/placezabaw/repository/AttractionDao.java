@@ -17,6 +17,10 @@ public interface AttractionDao extends CrudRepository<Attraction, Integer> {
 
     Optional<Attraction> findById(Integer id);
 
+    List<Attraction> findByAttractionTypeId(int attractionTypeId);
+    List<Attraction> findByPlaygroundId(int playgroundId);
+    List<Attraction> findByAttractionTypeIdAndPlaygroundId(int attractionTypeId, int playgroundId);
+
     @Override
     Attraction save(Attraction attraction);
 

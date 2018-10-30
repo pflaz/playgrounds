@@ -18,16 +18,16 @@ public class AttractionDbService {
         this.attractionDao = attractionDao;
     }
 
-    public List<Attraction> getAllAttractions() {
+    public List<Attraction> getAll() {
         return attractionDao.findAll();
     }
-    public Optional<Attraction> getAttraction(final Integer id) {
+    public Optional<Attraction> get(final Integer id) {
         return attractionDao.findById(id);
     }
-    public Attraction saveAttraction(final Attraction attraction) {
+    public Attraction save(final Attraction attraction) {
         return attractionDao.save(attraction);
     }
-    public void deleteAttraction(final Integer id) {
+    public void delete(final Integer id) {
         attractionDao.delete(id);
     }
 }
