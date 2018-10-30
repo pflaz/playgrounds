@@ -9,6 +9,7 @@ import pl.waw.placezabaw.service.UserDbService;
 
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -45,8 +46,35 @@ public class UserController {
         return userMapper.mapToUserDto(dbService.update(userId, userMapper.mapToUser(userDto)));
     }
 
-    @RequestMapping(method = RequestMethod.DELETE)
-    public void deleteUser(@RequestParam Integer userId) {
-        dbService.delete(userId);
+    @GetMapping(value = "/search")
+    public List<UserDto> search(@RequestParam(required = false) String login, @RequestParam(required = false) String name, @RequestParam(required = false) String email) {
+        if (login != null && !login.isEmpty() && name != null && !name.isEmpty() && email != null && !email.isEmpty()) {
+            return userMapper.mapToUserDtoList(dbService.findByLoginAndNameAndEmail(login, name, email));
+        }
+        if (login != null && !login.isEmpty() && name != null && !name.isEmpty()) {
+            return userMapper.mapToUserDtoList(dbService.findByLoginAndName(login, name));
+        }
+        if (name != null && !name.isEmpty() && email != null && !email.isEmpty()) {
+            return userMapper.mapToUserDtoList(dbService.findByNameAndEmail(name, email));
+        }
+        if (login != null && !login.isEmpty() && email != null && !email.isEmpty()) {
+            return userMapper.mapToUserDtoList(dbService.findByLoginAndEmail(login, email));
+        }
+        if (login != null && !login.isEmpty()) {
+            return userMapper.mapToUserDtoList(dbService.findByLogin(login));
+        }
+        if (name != null && !name.isEmpty()) {
+            return userMapper.mapToUserDtoList(dbService.findByName(name));
+        }
+        if (email != null && !email.isEmpty()) {
+            return userMapper.mapToUserDtoList(dbService.findByEmail(email));
+        }
+        return new ArrayList<>();
+
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public void deleteUser(@PathVariable Integer id) {
+        dbService.delete(id);
     }
 }

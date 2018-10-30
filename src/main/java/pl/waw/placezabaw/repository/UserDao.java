@@ -14,12 +14,20 @@ public interface UserDao extends CrudRepository<User, Integer> {
     @Override
     List<User> findAll();
 
+    List<User> findByLogin(String login);
+    List<User> findByNameContains(String name);
+    List<User> findByEmailContains(String email);
+    List<User> findByLoginAndNameContains(String login, String name);
+    List<User> findByLoginAndEmailContains(String login, String email);
+    List<User> findByNameContainsAndEmailContains(String name, String email);
+    List<User> findByLoginAndNameContainsAndEmailContains(String login, String name, String email);
+
     Optional<User> findById(Integer id);
 
 //    @Override
 //    User save(User user);
 
-    @Override
-    void delete(Integer id);
+/*    @Override
+    void delete(Integer id);*/
 
 }

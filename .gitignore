@@ -3,6 +3,7 @@
 !gradle/wrapper/gradle-wrapper.jar
 out
 .sql scripts/
+src/main/resources/import.sql
 
 ### STS ###
 .apt_generated

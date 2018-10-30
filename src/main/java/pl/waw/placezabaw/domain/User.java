@@ -91,27 +91,27 @@ public class User {
         this.id = id;
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    private void setLogin(String login) {
+    public void setLogin(String login) {
         this.login = login;
     }
 
-    private void setPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    private void setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    private void setPlaygrounds(List<Playground> playgrounds) {
+    public void setPlaygrounds(List<Playground> playgrounds) {
         this.playgrounds = playgrounds;
     }
 
-    private void setRates(List<Rate> rates) {
+    public void setRates(List<Rate> rates) {
         this.rates = rates;
     }
 }
