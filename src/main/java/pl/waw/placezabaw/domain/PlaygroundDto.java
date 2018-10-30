@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 public class PlaygroundDto {
     private int id;
+    private int userId;
     private String city;
     private String address;
     private String postalCode;

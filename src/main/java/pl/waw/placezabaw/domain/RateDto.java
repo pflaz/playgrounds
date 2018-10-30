@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
 @Getter
 public class RateDto {
     private int id;
+    private int userId;
+    private int playgroundId;
     private int rate;
     private String comment;
     private LocalDateTime ratedDateTime;

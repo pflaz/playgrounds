@@ -5,9 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -18,8 +15,6 @@ public class UserDto {
     private String login;
     private String password;
     private String email;
-    private List<Integer> playgroundsIds = new ArrayList<>();
-    private List<Integer> ratesIds = new ArrayList<>();
 
 }
 

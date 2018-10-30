@@ -2,6 +2,7 @@ package pl.waw.placezabaw.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.lang.annotation.Documented;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,9 +25,9 @@ public class Playground {
     @Column(name = "POSTAL_CODE")
     private String postalCode;
     @Column(name = "LATITUDE")
-    private double latitude;
+    private Double latitude;
     @Column(name = "LONGITUDE")
-    private double longitude;
+    private Double longitude;
     @Column(name = "DESCRIPTION")
     private String description;
     @OneToMany(
@@ -79,11 +80,11 @@ public class Playground {
         return postalCode;
     }
 
-    public double getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public double getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
@@ -119,11 +120,11 @@ public class Playground {
         this.postalCode = postalCode;
     }
 
-    private void setLatitude(double latitude) {
+    private void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    private void setLongitude(double longitude) {
+    private void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
