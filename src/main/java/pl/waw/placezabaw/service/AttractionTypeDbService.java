@@ -6,6 +6,7 @@ import pl.waw.placezabaw.domain.AttractionType;
 import pl.waw.placezabaw.exceptions.AttractionTypeNotFoundException;
 import pl.waw.placezabaw.repository.AttractionTypeDao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +33,13 @@ public class AttractionTypeDbService {
         attractionTypeDao.delete(id);
     }
 
+    /**
+     *
+     * @param id id of attraction type to update
+     * @param attractionType new data to save
+     * @return saved object
+     * @throws AttractionTypeNotFoundException if there is no AttractionType with 'id' param
+     */
     public AttractionType update(int id, AttractionType attractionType) throws AttractionTypeNotFoundException {
         AttractionType tmpAttractionType = attractionTypeDao.findOne(id);
         if (tmpAttractionType == null) {
@@ -40,5 +48,10 @@ public class AttractionTypeDbService {
         attractionType.setId(id);
         attractionTypeDao.save(attractionType);
         return attractionType;
+    }
+
+    public List<AttractionType> findByName(String name) {
+        if (name == null) return new ArrayList<>();
+        return attractionTypeDao.findByNameContains(name);
     }
 }

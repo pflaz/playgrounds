@@ -25,7 +25,7 @@ public class AttractionTypeMapper {
 
     public List<AttractionTypeDto> mapToAttractionTypeDtoList(final List<AttractionType> attractionTypeList) {
         return attractionTypeList.stream()
-                .map(attractionType -> new AttractionTypeDto(attractionType.getId(), attractionType.getName()))
+                .map(this::mapToAttractionTypeDto)
                 .collect(Collectors.toList());
     }
 }

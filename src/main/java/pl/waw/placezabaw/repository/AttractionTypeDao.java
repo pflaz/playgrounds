@@ -17,6 +17,8 @@ public interface AttractionTypeDao extends CrudRepository<AttractionType, Intege
 
     Optional<AttractionType> findById(Integer id);
 
+    List<AttractionType> findByNameContains(String name);
+
     @Override
     AttractionType save(AttractionType attractionType);
 

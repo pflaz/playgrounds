@@ -36,6 +36,11 @@ public class AttractionTypeController {
         return mapper.mapToAttractionTypeDto(dbService.get(id).orElseThrow(AttractionTypeNotFoundException::new));
     }
 
+    @GetMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<AttractionTypeDto> search(@RequestParam(required = false) String name) {
+        return mapper.mapToAttractionTypeDtoList(dbService.findByName(name));
+    }
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public AttractionTypeDto create(@RequestBody AttractionTypeDto attractionTypeDto) {
         attractionTypeDto.setId(0);
@@ -44,6 +49,7 @@ public class AttractionTypeController {
 
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public AttractionTypeDto update(@PathVariable int id, @RequestBody AttractionTypeDto attractionTypeDto) throws AttractionTypeNotFoundException {
+        attractionTypeDto.setId(id);
         return mapper.mapToAttractionTypeDto(dbService.update(id, mapper.mapToAttractionType(attractionTypeDto)));
     }
 
