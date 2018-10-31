@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Attr;
 import pl.waw.placezabaw.domain.Attraction;
+import pl.waw.placezabaw.exceptions.AttractionNotFoundException;
 import pl.waw.placezabaw.repository.AttractionDao;
 
 import java.util.List;
@@ -36,6 +37,16 @@ public class AttractionDbService {
 
     public List<Attraction> findByAttractionTypeIdAndPlaygroundId(final int attractionTypeId, final int playgroundId) {
         return attractionDao.findByAttractionTypeIdAndPlaygroundId(attractionTypeId, playgroundId);
+    }
+
+    public Attraction update(final int id, Attraction attraction) throws AttractionNotFoundException{
+        Attraction readAttraction = attractionDao.findOne(id);
+        if (readAttraction == null) {
+            throw new AttractionNotFoundException("Attraction ID: " + id + " not found.");
+        }
+        attraction.setId(id);
+        attractionDao.save(attraction);
+        return attraction;
     }
 
     public Attraction save(final Attraction attraction) {

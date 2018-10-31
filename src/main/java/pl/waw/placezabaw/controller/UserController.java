@@ -73,6 +73,8 @@ public class UserController {
 
     }
 
+    // TODO
+    // check deleting user - SQL errors
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public void deleteUser(@PathVariable Integer id) {
         dbService.delete(id);

@@ -59,23 +59,23 @@ public class Attraction {
         return description;
     }
 
-    private void setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    private void setAttractionType(AttractionType attractionType) {
+    public void setAttractionType(AttractionType attractionType) {
         this.attractionType = attractionType;
     }
 
-    private void setPlayground(Playground playground) {
+    public void setPlayground(Playground playground) {
         this.playground = playground;
     }
 
-    private void setQuantity(int quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    private void setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 }
