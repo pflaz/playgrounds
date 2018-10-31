@@ -63,27 +63,27 @@ public class Rate {
         return ratedDateTime;
     }
 
-    private void setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    private void setUser(User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
-    private void setPlayground(Playground playground) {
+    public void setPlayground(Playground playground) {
         this.playground = playground;
     }
 
-    private void setRate(int rate) {
+    public void setRate(int rate) {
         this.rate = rate;
     }
 
-    private void setComment(String comment) {
+    public void setComment(String comment) {
         this.comment = comment;
     }
 
-    private void setRatedDateTime(LocalDateTime ratedDateTime) {
+    public void setRatedDateTime(LocalDateTime ratedDateTime) {
         this.ratedDateTime = ratedDateTime;
     }
 }

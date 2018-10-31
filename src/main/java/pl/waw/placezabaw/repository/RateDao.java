@@ -23,4 +23,6 @@ public interface RateDao extends CrudRepository<Rate, Integer> {
 
     @Override
     void delete(Integer id);
+
+    List<Rate> findByRate(int rate);
 }
