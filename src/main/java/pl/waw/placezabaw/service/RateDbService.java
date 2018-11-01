@@ -6,6 +6,7 @@ import pl.waw.placezabaw.domain.Rate;
 import pl.waw.placezabaw.exceptions.RateNotFoundException;
 import pl.waw.placezabaw.repository.RateDao;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +31,10 @@ public class RateDbService {
         return rateDao.findByRate(rate);
     }
 
-    public Rate saveRate(final Rate rate) {
+    public Rate saveRate(Rate rate) {
+        if (rate.getRatedDateTime() == null) {
+            rate.setRatedDateTime(LocalDateTime.now());
+        }
         return rateDao.save(rate);
     }
 

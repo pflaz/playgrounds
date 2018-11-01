@@ -1,5 +1,7 @@
 package pl.waw.placezabaw.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -23,16 +25,17 @@ public class Rate {
     @Column(name = "COMMENT")
     private String comment;
     @Column(name = "RATED_DATE_TIME")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @NotNull
     private LocalDateTime ratedDateTime;
 
-    public Rate(int id, User user, Playground playground, int rate, String comment) {
+    public Rate(int id, User user, Playground playground, int rate, String comment, LocalDateTime ratedDateTime) {
         this.id = id;
         this.user = user;
         this.playground = playground;
         this.rate = rate;
         this.comment = comment;
-        this.ratedDateTime = LocalDateTime.now();
+        this.ratedDateTime = ratedDateTime;
     }
 
     public Rate() {

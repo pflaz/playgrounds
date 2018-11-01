@@ -52,7 +52,8 @@ public class RateMapper {
                 user,
                 playground,
                 rateDto.getRate(),
-                rateDto.getComment()
+                rateDto.getComment(),
+                rateDto.getRatedDateTime()
         );
     }
 }

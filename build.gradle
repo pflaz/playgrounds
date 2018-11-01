@@ -29,6 +29,8 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-validation')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile group: 'org.projectlombok', name: 'lombok', version: '1.16.20'
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.7'
+    compile group: 'org.hibernate', name: 'hibernate-java8', version: '5.3.7.Final'
 
 
     runtime('mysql:mysql-connector-java')
