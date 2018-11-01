@@ -9,7 +9,7 @@ public class Attraction {
 
     @Column(name = "ID", unique = true)
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne

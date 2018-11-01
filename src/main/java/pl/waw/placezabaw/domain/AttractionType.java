@@ -1,7 +1,6 @@
 package pl.waw.placezabaw.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,7 @@ public class AttractionType {
 
     @Column(name = "ID", unique = true)
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "NAME")

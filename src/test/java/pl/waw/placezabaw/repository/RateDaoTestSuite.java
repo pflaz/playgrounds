@@ -10,6 +10,8 @@ import pl.waw.placezabaw.domain.Playground;
 import pl.waw.placezabaw.domain.Rate;
 import pl.waw.placezabaw.domain.User;
 
+import java.time.LocalDateTime;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class RateDaoTestSuite {
@@ -30,10 +32,10 @@ public class RateDaoTestSuite {
         Playground playground = new Playground(0,user, "city", "address", "00-000", 32,32,"desc");
         user.getPlaygrounds().add(playground);
         playgroundDao.save(playground);
-        Rate rate = new Rate(0,user, playground, 5, "comment");
+        Rate rate = new Rate(0,user, playground, 5, "comment", LocalDateTime.now());
         user.getRates().add(rate);
         playground.getRates().add(rate);
-        Rate rate2 = new Rate(0,user2, playground, 4, "");
+        Rate rate2 = new Rate(0,user2, playground, 4, "", LocalDateTime.now());
         user2.getRates().add(rate2);
         playground.getRates().add(rate2);
 
@@ -48,14 +50,14 @@ public class RateDaoTestSuite {
         Assert.assertNotEquals(0, id2);
 
         // CleanUp
-        rateDao.delete(id1);
-        rateDao.delete(id2);
+        rateDao.deleteById(id1);
+        rateDao.deleteById(id2);
         int playgroundId = playground.getId();
-        playgroundDao.delete(playgroundId);
+        playgroundDao.deleteById(playgroundId);
         int userId = user.getId();
         int user2Id = user2.getId();
-        userDao.delete(userId);
-        userDao.delete(user2Id);
+        userDao.deleteById(userId);
+        userDao.deleteById(user2Id);
 
     }
 }

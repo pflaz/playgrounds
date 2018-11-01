@@ -39,10 +39,10 @@ public class PlaygroundDaoTestSuite {
         Assert.assertNotEquals(0, id2);
 
         // CleanUp
-        playgroundDao.delete(id);
-        playgroundDao.delete(id2);
+        playgroundDao.deleteById(id);
+        playgroundDao.deleteById(id2);
         int userId = user.getId();
-        userDao.delete(userId);
+        userDao.deleteById(userId);
 
     }
 

@@ -28,6 +28,6 @@ public class PlaygroundDbService {
         return playgroundDao.save(playground);
     }
     public void deletePlayground(final Integer id) {
-        playgroundDao.delete(id);
+        playgroundDao.deleteById(id);
     }
 }

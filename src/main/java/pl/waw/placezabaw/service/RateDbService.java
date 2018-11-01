@@ -39,7 +39,7 @@ public class RateDbService {
     }
 
     public Rate update(int id, Rate rate) throws RateNotFoundException {
-        Rate readRate = rateDao.findOne(id);
+        Rate readRate = rateDao.findById(id).orElse(null);
         if (readRate == null) {
             throw new RateNotFoundException("Rate ID: " + id + " not found.");
         }
@@ -47,6 +47,6 @@ public class RateDbService {
         return rateDao.save(rate);
     }
     public void deleteRate(final Integer id) {
-        rateDao.delete(id);
+        rateDao.deleteById(id);
     }
 }

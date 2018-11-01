@@ -4,8 +4,6 @@ package pl.waw.placezabaw.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import pl.waw.placezabaw.domain.Attraction;
-import pl.waw.placezabaw.domain.AttractionType;
 import pl.waw.placezabaw.domain.AttractionTypeDto;
 import pl.waw.placezabaw.exceptions.AttractionTypeNotFoundException;
 import pl.waw.placezabaw.mapper.AttractionTypeMapper;

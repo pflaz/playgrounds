@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class Rate {
     @Column(name = "ID", unique = true)
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @ManyToOne
     @JoinColumn(name = "USER_ID")

@@ -51,11 +51,11 @@ public class UserDbService {
         return userDao.save(user);
     }
     public void delete(final Integer id) {
-        userDao.delete(id);
+        userDao.deleteById(id);
     }
 
     public User update(int userId, User user) throws UserNotFoundException {
-        User readUser = userDao.findOne(userId);
+        User readUser = userDao.findById(userId).orElse(null);
         if (readUser == null) {
             throw new UserNotFoundException("User (ID: " + userId + ") not found.");
         }

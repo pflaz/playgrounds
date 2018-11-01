@@ -27,7 +27,5 @@ public interface UserDao extends CrudRepository<User, Integer> {
 //    @Override
 //    User save(User user);
 
-/*    @Override
-    void delete(Integer id);*/
 
 }

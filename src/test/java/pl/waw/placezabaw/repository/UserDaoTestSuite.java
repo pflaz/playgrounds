@@ -27,7 +27,7 @@ public class UserDaoTestSuite {
         Assert.assertNotEquals(0, id);
 
         // CleanUp
-        userDao.delete(id);
+        userDao.deleteById(id);
     }
 
 }

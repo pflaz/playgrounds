@@ -22,6 +22,4 @@ public interface AttractionTypeDao extends CrudRepository<AttractionType, Intege
     @Override
     AttractionType save(AttractionType attractionType);
 
-    @Override
-    void delete(Integer id);
 }

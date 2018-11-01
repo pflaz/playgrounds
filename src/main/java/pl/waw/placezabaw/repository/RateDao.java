@@ -4,7 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import pl.waw.placezabaw.domain.Rate;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
@@ -21,8 +20,6 @@ public interface RateDao extends CrudRepository<Rate, Integer> {
     @Override
     Rate save(Rate rate);
 
-    @Override
-    void delete(Integer id);
 
     List<Rate> findByRate(int rate);
 }

@@ -1,12 +1,9 @@
 package pl.waw.placezabaw.mapper;
 
 import org.springframework.stereotype.Component;
-import pl.waw.placezabaw.domain.Playground;
-import pl.waw.placezabaw.domain.Rate;
 import pl.waw.placezabaw.domain.User;
 import pl.waw.placezabaw.domain.UserDto;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

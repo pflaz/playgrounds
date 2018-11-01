@@ -53,14 +53,14 @@ public class AttractionDaoTestSuite {
         Assert.assertNotEquals(0, id2);
 
         // CleanUp
-        attractionDao.delete(id);
-        attractionDao.delete(id2);
+        attractionDao.deleteById(id);
+        attractionDao.deleteById(id2);
 
         int userId = user.getId();
         int playgroundId = playground.getId();
         int attractionTypeId = attractionType.getId();
-        attractionTypeDao.delete(attractionTypeId);
-        playgroundDao.delete(playgroundId);
-        userDao.delete(userId);
+        attractionTypeDao.deleteById(attractionTypeId);
+        playgroundDao.deleteById(playgroundId);
+        userDao.deleteById(userId);
     }
 }

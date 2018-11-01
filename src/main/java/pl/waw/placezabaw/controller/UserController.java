@@ -7,10 +7,10 @@ import pl.waw.placezabaw.exceptions.UserNotFoundException;
 import pl.waw.placezabaw.mapper.UserMapper;
 import pl.waw.placezabaw.service.UserDbService;
 
-import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("v1/users")

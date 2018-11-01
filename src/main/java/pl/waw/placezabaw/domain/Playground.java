@@ -1,19 +1,17 @@
 package pl.waw.placezabaw.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.lang.annotation.Documented;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table (name = "PLAYGROUNDS")
+@Table(name = "PLAYGROUNDS")
 public class Playground {
     @Column(name = "ID", unique = true)
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToOne (
+    @ManyToOne(
             fetch = FetchType.EAGER
     )
     @JoinColumn(name = "USER_ID")

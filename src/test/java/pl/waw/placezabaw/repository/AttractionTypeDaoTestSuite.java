@@ -29,6 +29,6 @@ public class AttractionTypeDaoTestSuite {
         Assert.assertNotEquals(0, attractionType);
 
         //CleanUp
-        attractionTypeDao.delete(id);
+        attractionTypeDao.deleteById(id);
     }
 }

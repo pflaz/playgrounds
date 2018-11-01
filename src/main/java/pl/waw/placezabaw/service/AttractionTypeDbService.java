@@ -30,7 +30,7 @@ public class AttractionTypeDbService {
         return attractionTypeDao.save(attractionType);
     }
     public void delete(final Integer id) {
-        attractionTypeDao.delete(id);
+        attractionTypeDao.deleteById(id);
     }
 
     /**
@@ -41,7 +41,7 @@ public class AttractionTypeDbService {
      * @throws AttractionTypeNotFoundException if there is no AttractionType with 'id' param
      */
     public AttractionType update(int id, AttractionType attractionType) throws AttractionTypeNotFoundException {
-        AttractionType tmpAttractionType = attractionTypeDao.findOne(id);
+        AttractionType tmpAttractionType = attractionTypeDao.findById(id).orElse(null);
         if (tmpAttractionType == null) {
             throw new AttractionTypeNotFoundException("Attraction type (ID: " + id + " ) not found.");
         }

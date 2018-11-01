@@ -2,7 +2,6 @@ package pl.waw.placezabaw.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.w3c.dom.Attr;
 import pl.waw.placezabaw.domain.Attraction;
 import pl.waw.placezabaw.exceptions.AttractionNotFoundException;
 import pl.waw.placezabaw.repository.AttractionDao;
@@ -39,8 +38,8 @@ public class AttractionDbService {
         return attractionDao.findByAttractionTypeIdAndPlaygroundId(attractionTypeId, playgroundId);
     }
 
-    public Attraction update(final int id, Attraction attraction) throws AttractionNotFoundException{
-        Attraction readAttraction = attractionDao.findOne(id);
+    public Attraction update(final int id, Attraction attraction) throws AttractionNotFoundException {
+        Attraction readAttraction = attractionDao.findById(id).orElse(null);
         if (readAttraction == null) {
             throw new AttractionNotFoundException("Attraction ID: " + id + " not found.");
         }
@@ -53,6 +52,6 @@ public class AttractionDbService {
         return attractionDao.save(attraction);
     }
     public void delete(final Integer id) {
-        attractionDao.delete(id);
+        attractionDao.deleteById(id);
     }
 }
